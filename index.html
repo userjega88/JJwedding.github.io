@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Invitation | Jegadeesan & Janani</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --royal-purple: #6A0DAD;
+            --rose-red: #E31E24;
+            --jasmine-white: #FFFFFF;
+            --bg-cream: #FFFCF5;
+        }
+
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; padding-bottom: 100px; 
+            text-align: center; 
+            background: var(--bg-cream);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* --- FLORAL BACKGROUND ANIMATION --- */
+        .decor-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .flower {
+            position: absolute;
+            opacity: 0;
+            animation: floatDown 12s infinite linear;
+        }
+
+        @keyframes floatDown {
+            0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* --- CONTENT STYLING --- */
+        .invitation-top {
+            background: var(--royal-purple);
+            color: white;
+            padding: 15px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            z-index: 10;
+        }
+
+        header { padding: 40px 10px; position: relative; z-index: 5; }
+
+        .names-display {
+            font-family: 'Great Vibes', cursive;
+            font-size: clamp(2.8rem, 8vw, 4.5rem);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            color: var(--royal-purple);
+            margin-bottom: 10px;
+        }
+
+        .golden-j {
+            background: linear-gradient(to bottom, #FFD700 0%, #D4AF37 40%, #B8860B 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-size: 1.4em;
+            filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.1));
+        }
+
+        /* --- TIMER --- */
+        #timer-box {
+            background: white;
+            display: inline-flex;
+            justify-content: center;
+            padding: 20px 25px;
+            border-radius: 50px;
+            border: 1px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            margin: 30px 0;
+            gap: 15px;
+        }
+        .timer-unit { display: flex; flex-direction: column; min-width: 60px; }
+        .timer-num { font-size: 1.8rem; font-weight: bold; color: var(--royal-purple); }
+        .timer-label { font-size: 0.6rem; text-transform: uppercase; color: #888; }
+
+        /* --- SECTIONS --- */
+        .section { 
+            background: white;
+            margin: 20px auto; 
+            max-width: 500px; 
+            padding: 35px 25px; 
+            border-radius: 25px;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.03);
+            position: relative;
+            z-index: 5;
+        }
+
+        .btn { 
+            background: var(--royal-purple);
+            color: white; 
+            padding: 12px 28px; 
+            text-decoration: none; 
+            border-radius: 30px; 
+            display: inline-block; 
+            margin: 10px 5px; 
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+        .btn:hover { background: #4B0082; transform: translateY(-2px); }
+
+        .bottom-nav {
+            position: fixed; bottom: 0; width: 100%;
+            background: white; display: flex; justify-content: space-around;
+            padding: 18px 0; border-top: 1px solid var(--gold);
+            z-index: 1000;
+        }
+        .bottom-nav a { text-decoration: none; color: var(--royal-purple); font-size: 0.8rem; font-weight: 600; }
+    </style>
+</head>
+<body>
+
+    <div class="decor-container" id="decorField"></div>
+
+    <div class="invitation-top" id="home">
+        You are cordially invited for the wedding reception of
+    </div>
+
+    <header>
+        <div class="names-display">
+            <span><span class="golden-j">J</span>egadeesan</span>
+            <span style="font-size: 0.6em; opacity: 0.5;">&</span>
+            <span><span class="golden-j">J</span>anani</span>
+        </div>
+        <div style="letter-spacing: 5px; font-weight: 300; color: #666;"> 28 MAY 2026</div>
+
+        <div id="timer-box">
+            <div class="timer-unit"><span class="timer-num" id="days">00</span><span class="timer-label">Days</span></div>
+            <div class="timer-unit"><span class="timer-num" id="hours">00</span><span class="timer-label">Hours</span></div>
+            <div class="timer-unit"><span class="timer-num" id="mins">00</span><span class="timer-label">Mins</span></div>
+            <div class="timer-unit"><span class="timer-num" id="secs">00</span><span class="timer-label">Secs</span></div>
+        </div>
+    </header>
+
+    <section class="section" id="details">
+        <h2 style="font-family: 'Great Vibes'; font-size: 3rem; color: var(--royal-purple); margin-top: 0;">Event Details</h2>
+        
+        <p><strong>RECEPTION</strong><br>Thursday, 28-May-2026 | 6:00 PM<br>Ranjan Mahal, Poigai, Vellore</p>
+        <a href="https://maps.app.goo.gl/HAP9YgrTtHVZS1zc6" target="_blank" class="btn">Navigate to Mahal</a>
+        
+        <hr style="opacity: 0.1; margin: 30px auto; width: 60%;">
+        
+        <p><strong>MARRIAGE</strong><br>Friday, 29-May-2026 | 6:30 AM<br>Vellore Fort Temple, Vellore</p>
+        <a href="https://maps.app.goo.gl/zsq9nBsHcZDinKAU9" target="_blank" class="btn">Navigate to Temple</a>
+    </section>
+
+    <section class="section" id="rsvp">
+        <h2 style="font-family: 'Great Vibes'; font-size: 3rem; color: var(--royal-purple); margin-top: 0;">RSVP</h2>
+        <p>Please let us know if you can make it!</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfpmHc4kP5G3FfzuSjM17U2vxWOTuV9x1Ix0Md1-ZniEpWNaw/viewform" target="_blank" class="btn">Join Us</a>
+    </section>
+
+    <nav class="bottom-nav">
+        <a href="#home">HOME</a>
+        <a href="#details">DETAILS</a>
+        <a href="#rsvp">RSVP</a>
+    </nav>
+
+    <script>
+        // Generate Red Roses and White Jasmine Flowers
+        const decorField = document.getElementById('decorField');
+        const flowers = [
+            { char: '🌹', color: '#E31E24' }, // Rose
+            { char: '🌷', color: '#FFFFFF' }, // Jasmine/Malli
+            { char: '🌸', color: '#FFB6C1' }  // Divine flower
+        ];
+
+        for (let i = 0; i < 35; i++) {
+            const flowerType = flowers[Math.floor(Math.random() * flowers.length)];
+            const item = document.createElement('div');
+            item.className = 'flower';
+            item.innerHTML = flowerType.char;
+            item.style.color = flowerType.color;
+            item.style.left = Math.random() * 100 + '%';
+            item.style.animationDelay = Math.random() * 12 + 's';
+            item.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            item.style.filter = "drop-shadow(2px 2px 5px rgba(0,0,0,0.1))";
+            decorField.appendChild(item);
+        }
+
+        // Countdown Timer
+        const weddingDate = new Date("May 28, 2026 18:00:00").getTime();
+        setInterval(() => {
+            const now = new Date().getTime();
+            const diff = weddingDate - now;
+            if (diff > 0) {
+                document.getElementById("days").innerText = Math.floor(diff / (1000 * 60 * 60 * 24)).toString().padStart(2, '0');
+                document.getElementById("hours").innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString().padStart(2, '0');
+                document.getElementById("mins").innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60)).toString().padStart(2, '0');
+                document.getElementById("secs").innerText = Math.floor((diff % (1000 * 60)) / 1000).toString().padStart(2, '0');
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
